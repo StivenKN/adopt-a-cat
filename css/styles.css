@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+/* General rules */
+*,
+*::before,
+*::after {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
+}
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 10vh;
+}
+/* Header */
+nav {
+	position: fixed;
+	height: 10vh;
+	width: 100%;
+	background: none;
+	display: grid;
+	justify-content: center;
+	z-index: 100;
+	transition: background 400ms ease-out;
+}
+nav img {
+	height: 4.8rem;
+	margin-left: 2rem;
+	position: absolute;
+	align-items: center;
+	height: 100%;
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 300ms ease-out;
+}
+.display-navImg {
+	opacity: 1;
+}
+nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	width: 80vw;
+	align-items: center;
+	height: 100%;
+	list-style: none;
+}
+nav a {
+	color: white;
+	text-decoration: none;
+	position: relative;
+	transition: color 200ms ease-out, background 200ms ease-out;
+}
+nav a:focus {
+	color: #d4a373;
+}
+nav a::before {
+	content: '';
+	position: absolute;
+	background: white;
+	height: 10%;
+	width: 0;
+	bottom: -4px;
+	left: 0;
+	transition: width 300ms ease-out;
+}
+nav a:hover::before {
+	width: 100%;
+}
+nav a:focus::before {
+	background: #d4a373;
+}
+.bg-nav {
+	background: #000;
+}
+
+/* Main bg */
+.bg-container {
+	height: 100vh;
+	background: url('../img/bg-cat.jpg');
+	background-position-y: center;
+	background-position-x: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	z-index: 1;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	padding-left: 2rem;
+	flex-direction: column;
+	gap: 2rem;
+}
+.bg-container::before {
+	content: '';
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	background: rgba(0, 0, 0, 0.8);
+}
+.bg-container h2 {
+	color: white;
+	font-size: 3rem;
+}
+.bg-container a {
+	color: white;
+	text-decoration: none;
+	font-size: 2rem;
+	border-bottom: 2px solid white;
+	max-width: fit-content;
+	padding: 0.5rem;
+	margin-left: 0.5em;
+	transition: color 300ms ease-out, border-color 300ms ease-out;
+}
+.bg-container a:hover {
+	color: bisque;
+	border-color: bisque;
+}
+
+/* Gallery */
+.gallery-container {
+	min-height: 90vh;
+	padding: 2rem 0 2rem 0;
+	background: #fefae0;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+}
+.gallery-container h2 {
+	justify-self: flex-start;
+	margin-bottom: 2rem;
+	font-size: 2.5rem;
+}
+.gallery {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 80%;
+	gap: 15px;
+}
+.gallery img {
+	cursor: zoom-in;
+	width: 14rem;
+	height: 13rem;
+	object-fit: cover;
+	transition: filter 300ms ease-out;
+}
+.gallery img:hover {
+	filter: brightness(50%);
+}
+.popUp {
+	position: fixed;
+	background: rgba(0, 0, 0, 0.8);
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 100;
+	visibility: hidden;
+	transition: opacity 400ms ease-out;
+}
+.popUp span {
+	position: absolute;
+	top: 0;
+	right: 30px;
+	font-size: 60px;
+	font-weight: bolder;
+	color: white;
+	cursor: pointer;
+	user-select: none;
+	z-index: 100;
+}
+.popUp img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 5px;
+	width: 50rem;
+	object-fit: cover;
+	-webkit-user-drag: none;
+	user-select: none;
+}
+
+/* Formulario para adoptar */
+.adopt-container {
+	min-height: 100vh;
+	background: #5e3023;
+	display: grid;
+	grid-template-rows: 20% 80%;
+}
+.adopt-container h2 {
+	color: white;
+	font-size: 2.5rem;
+	text-align: center;
+	align-self: center;
+}
+.adopt-container form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-self: center;
+	justify-content: center;
+	margin-bottom: 4rem;
+	width: 60%;
+	background-color: white;
+	border-radius: 15px;
+	min-height: 10em;
+	gap: 15px;
+}
+.adopt-container label {
+	align-self: flex-start;
+	font-size: 1.6rem;
+	margin-left: 2em;
+}
+.adopt-container input {
+	width: 90%;
+	height: 40px;
+	background: none;
+	padding: 1rem;
+	border: none;
+	font-size: 1.2rem;
+	border-bottom: 2px solid #000;
+	transition: border-color 200ms ease-in;
+}
+.adopt-container input:focus {
+	outline: none;
+	border-color: #d4a373;
+}
+.adopt-container button {
+	background: none;
+	border: none;
+	padding: 0.1em;
+	border-bottom: 2px solid #000;
+	font-size: 1.3rem;
+	margin-top: 0.8em;
+	padding-inline: 1rem;
+	cursor: pointer;
+}
+.adopt-info {
+	color: green;
+	border-bottom: 1px solid green;
+	font-size: 1.1rem;
+	margin-bottom: 10px;
+}
+
+/* Donde nos encuentras section */
+.ubication-container {
+	height: 90vh;
+	/* border: 1px solid red; */
+	display: flex;
+	flex: 1;
+	gap: 1em;
+	flex-direction: column;
+}
+.ubication-container h2 {
+	justify-self: flex-start;
+	margin: 3em 0 1em 0;
+	font-size: 2rem;
+	text-align: center;
+}
+.card-ubication {
+	padding: 2em;
+	justify-self: center;
+	align-self: center;
+	color: white;
+	background: black;
+	font-size: 1.5rem;
+	gap: 2rem;
+	border-radius: 15px;
+}
+.card-ubication > p {
+	font-weight: 600;
+}
+
+/* PQRS */
+.pqrs-container {
+	height: 80vh;
+	background: lightgrey;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	/* justify-content: center; */
+	align-items: center;
+}
+.pqrs-container h2 {
+	margin: 2rem 0 1rem 0;
+}
+.pqrs-container span {
+	border-bottom: 2px solid #000;
+}
+.pqrs-container li {
+	font-size: 1.3rem;
+	font-weight: bold;
+	align-self: flex-start;
+	margin-left: 5rem;
+}
+/* TODO: hacer que de */
+/* .pqrs-container li:nth-of-type(2), .pqrs-container p:nth-child(2) {
+	align-items: flex-end;
+} */
+.pqrs-container li::marker {
+	content: '👌';
+}
+.pqrs-container p {
+	margin-left: 8rem;
+	font-size: 1.1rem;
+	width: 40ch;
+	align-self: flex-start;
+}
+/* TODO: Necesito hacer que a la derecha del texto haya imagenes, pero como me da pereza luego lo hago xd */
+
+/* *Footer */
+footer {
+	height: 10vh;
+	background: #000;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
